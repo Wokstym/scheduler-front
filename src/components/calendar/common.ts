@@ -1,5 +1,5 @@
-import {DayName} from "../../utils/inputs";
 import moment from "moment/moment";
+import {DayName} from "../../types/SimulationTypes";
  function slotToMoment(time: string, day: DayName) {
     const timeMoment = moment(time, ["HH:mm"])
 

@@ -5,6 +5,7 @@ interface ModalProps {
     isOpen: boolean;
     onClose?: () => void;
     children: React.ReactNode;
+    className: string
 }
 
 const isClickInsideRectangle = (e: MouseEvent, element: HTMLElement) => {
@@ -18,7 +19,7 @@ const isClickInsideRectangle = (e: MouseEvent, element: HTMLElement) => {
     );
 };
 
-const Modal: React.FC<ModalProps> = ({isOpen, onClose, children}) => {
+const Modal: React.FC<ModalProps> = ({isOpen, onClose, children, className}) => {
     const modalRef = useRef<HTMLDialogElement | null>(null);
 
     useEffect(() => {
@@ -35,7 +36,7 @@ const Modal: React.FC<ModalProps> = ({isOpen, onClose, children}) => {
     return (
         <dialog
             ref={modalRef}
-            className="modal"
+            className={`modal ${className}`}
             onKeyDown={(event: React.KeyboardEvent<HTMLDialogElement>) => {
                 if (event.key === "Escape") {
                     if (onClose) {

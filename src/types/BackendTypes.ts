@@ -1,10 +1,9 @@
-import {Slot, Student} from "../utils/inputs";
+import {Dataset} from "./SimulationTypes";
 
 export interface ClassWithStudents {
     classId: number
     studentsIds: number[]
 }
-
 
 export type SingleResult = {
     algorithm: string
@@ -12,12 +11,6 @@ export type SingleResult = {
 
 } & ({ error: ErrorResponse } | { stats: Statistics })
 
-// export interface SingleResult {
-//     algorithm: string
-//     assigned: ClassWithStudents[]
-//     error?: ErrorResponse
-//     stats: Statistics? = null,
-// }
 
 export interface Statistics {
     timeInSeconds: number,
@@ -34,9 +27,7 @@ export interface GenerateResults {
     results: SingleResult[]
 }
 
-
-export function generate(currentData: { slots: Slot[]; students: Student[] }): Promise<GenerateResults> {
-    console.log(currentData)
+export function generate(currentData: Dataset): Promise<GenerateResults> {
     return fetch(`http://localhost:8080/generate`, {
         method: "POST",
         headers: {
