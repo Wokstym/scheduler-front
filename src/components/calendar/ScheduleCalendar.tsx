@@ -43,7 +43,7 @@ function getStyle(title: string, hueMap: Map<String, number>): BackgroundStyle {
 function calculateTitleToHue(strings: string[]): Map<String, number> {
     const titlesWithoutType = Array.from(new Set(strings.map(e => cutTypeFromTitle(e))))
 
-    const multiplier = 360 / (titlesWithoutType.length - 1)
+    const multiplier = 360 / titlesWithoutType.length
     let current = 0;
     const result = new Map<String, number>()
 
